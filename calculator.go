@@ -54,7 +54,7 @@ func main() {
 	var err2 any
 
 	for i, w := range string(math) {
-		if (string(w) == "+" || string(w) == "-" || string(w) == "/" || string(w) == "*") && i != 0 && string(math[i-1]) >= "0" && (string(math[i+1]) >= "0" || string(math[i+1]) == "-") {
+		if string(w) == "+" || string(w) == "-" || string(w) == "/" || string(w) == "*" {
 			oper = string(w)
 			str := string(math[:i]) + " " + string(math[i+1:])
 			mathList = strings.Fields(str)
@@ -64,6 +64,8 @@ func main() {
 				o2, err2 = strconv.Atoi(mathList[1])
 				if err1 != nil || err2 != nil {
 					panic("Что-то не так")
+				} else if o1 < 1 || o1 > 10 || o2 < 1 || o2 > 10 {
+					panic("На вход принимаются только числа в диапазоне от 1 до 10 включительно!")
 				}
 
 			} else if romeToArab[mathList[0]] != 0 && romeToArab[mathList[1]] != 0 {
@@ -89,7 +91,7 @@ func main() {
 	case "*":
 		res = o1 * o2
 	default:
-		panic("Оператор не найден!")
+		panic("Оператор не найден, или выражение не правильное!")
 
 	}
 
