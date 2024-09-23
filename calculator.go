@@ -107,8 +107,8 @@ func main() {
 	if rome {
 		div := res / 10
 		mod := res % 10
-		if res < 0 {
-			panic("В Римской системе нет отрицательных чисел!")
+		if res < 1 {
+			panic("В Римской системе нет чисел меньше 1!")
 		} else if ArabToRome[div*10] != "" {
 			if res < 10 {
 				fmt.Println(ArabToRome[res])
